@@ -12,6 +12,7 @@
 #include "rknn_api.h"
 #include "preprocess.h"
 #include "hdmi_out.hpp"
+#include "test_programm.hpp"
 
 #include <opencv2/videoio.hpp>
 #include <opencv2/opencv.hpp>
@@ -85,11 +86,15 @@ static unsigned char *load_model(const char *filename, int *model_size)
   *model_size = size;
   return data;
 }
+
 /*-------------------------------------------
                   Main Functions
 -------------------------------------------*/
 int main(int argc, char **argv)
 {
+  
+test_programm();
+  
   if (argc < 2)
   {
     printf("Usage: %s <rknn model>\n", argv[0]);

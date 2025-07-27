@@ -15,11 +15,13 @@ set(CMAKE_SKIP_INSTALL_RPATH FALSE)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
-if(CMAKE_C_COMPILER MATCHES "aarch64")
-  set(LIB_ARCH aarch64)
-else()
-  set(LIB_ARCH armhf)
-endif()
+#if(CMAKE_C_COMPILER MATCHES "aarch64")
+ # set(LIB_ARCH aarch64)
+#else()
+ # set(LIB_ARCH armhf)
+#endif()
+
+set(LIB_ARCH aarch64)
 
 include_directories(${CMAKE_SOURCE_DIR})
 
@@ -63,6 +65,7 @@ set(CMAKE_INSTALL_RPATH "lib")
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 add_executable(rknn_opi_hdmi_track
+  src/test_programm_usb_track.cpp
   src/main_usb_hdmi.cpp
   src/hdmi_out.cpp
   src/preprocess.cc
@@ -92,3 +95,10 @@ install(FILES ${LABEL_FILE} DESTINATION ./model/)
 if(ZLMEDIAKIT_LIBS)
   install(PROGRAMS ${ZLMEDIAKIT_LIBS} DESTINATION lib)
 endif()
+
+# --- weiteres Executable ---
+add_executable(first_programm
+  src/first_programm.cpp
+)
+
+install(TARGETS first_programm DESTINATION .)
