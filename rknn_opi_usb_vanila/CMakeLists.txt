@@ -65,11 +65,12 @@ set(CMAKE_INSTALL_RPATH "lib")
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 add_executable(rknn_opi_hdmi_track
-  src/test_programm_usb_track.cpp
   src/main_usb_hdmi.cpp
   src/hdmi_out.cpp
   src/preprocess.cc
   src/postprocess.cc
+  src/test_programm_usb_track.cpp
+  src/uart.cpp
 )
 
 target_link_libraries(rknn_opi_hdmi_track 

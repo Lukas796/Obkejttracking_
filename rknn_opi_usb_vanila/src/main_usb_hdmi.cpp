@@ -3,6 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include <iostream> //für uart
+#include <chrono>   //für uart
+#include <thread>   //für uart
+#include <termios.h>  //für uart
+
 #include <sys/time.h>
 
 #define _BASETSD_H
@@ -12,7 +18,8 @@
 #include "rknn_api.h"
 #include "preprocess.h"
 #include "hdmi_out.hpp"
-#include "test_programm.hpp"
+#include "test_programm.hpp"  //tesprogramm für einbindung uart
+#include "uart.hpp"           //für uart
 
 #include <opencv2/videoio.hpp>
 #include <opencv2/opencv.hpp>
@@ -94,7 +101,13 @@ int main(int argc, char **argv)
 {
   
 test_programm();
-  
+UART uart("/dev/ttyACM1", B9600); // Port muss evtl. angepasst werden+
+
+if (!uart.isOpen()) {
+    std::cerr << "❌ Kein Arduino angebunden! Stelle sicher, dass das Gerät an /dev/ttyACM1 angeschlossen ist.\n";
+    return 1;
+}
+
   if (argc < 2)
   {
     printf("Usage: %s <rknn model>\n", argv[0]);
@@ -376,6 +389,19 @@ test_programm();
       rectangle(frame, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(256, 0, 0, 256), 3);
       putText(frame, text, cv::Point(x1, y1 + 12), cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(255, 255, 255));
     }
+
+    // erste Position via UART senden 
+    if (detect_result_group.count > 0) {
+      detect_result_t *first = &(detect_result_group.results[0]);
+
+      int centerX = (first->box.left + first->box.right) / 2;
+      int centerY = (first->box.top + first->box.bottom) / 2;
+
+      std::string posString = "X:" + std::to_string(centerX) + ",Y:" + std::to_string(centerY) + "\n";
+      uart.send(posString);
+      std::cout << "📤 Gesendet an Arduino: " << posString;
+    }
+    
     // write HDMI-OUT
     hdmi_out_show(hdmi_out_ctx, frame);
     
