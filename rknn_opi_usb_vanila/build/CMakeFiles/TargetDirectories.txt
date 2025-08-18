@@ -1,0 +1,8 @@
+/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_usb_vanila/build/CMakeFiles/install/strip.dir
+/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_usb_vanila/build/CMakeFiles/install.dir
+/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_usb_vanila/build/CMakeFiles/list_install_components.dir
+/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_usb_vanila/build/CMakeFiles/rebuild_cache.dir
+/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_usb_vanila/build/CMakeFiles/edit_cache.dir
+/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_usb_vanila/build/CMakeFiles/first_programm.dir
+/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_usb_vanila/build/CMakeFiles/install/local.dir
+/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_usb_vanila/build/CMakeFiles/rknn_opi_hdmi_track.dir

@@ -15,11 +15,13 @@ set(CMAKE_SKIP_INSTALL_RPATH FALSE)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
-if(CMAKE_C_COMPILER MATCHES "aarch64")
+#if(CMAKE_C_COMPILER MATCHES "aarch64")
   set(LIB_ARCH aarch64)
-else()
-  set(LIB_ARCH armhf)
-endif()
+#else()
+#  set(LIB_ARCH armhf)
+#endif()
+
+set(LIB_ARCH aarch64)
 
 include_directories(${CMAKE_SOURCE_DIR})
 
@@ -67,6 +69,7 @@ add_executable(rknn_opi_hdmi_track
   src/hdmi_out.cpp
   src/preprocess.cc
   src/postprocess.cc
+  src/uart.cpp
 )
 
 target_link_libraries(rknn_opi_hdmi_track 

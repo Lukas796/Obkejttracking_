@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_usb_vanila/src/first_programm.cpp
+iostream
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/first_programm.dir/src/first_programm.cpp.o -o first_programm  -Wl,-rpath,lib 

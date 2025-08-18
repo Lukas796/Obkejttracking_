@@ -1,0 +1,16 @@
+post process config: box_conf_threshold = 0.25, nms_threshold = 0.45
+Loading mode...
+sdk version: 1.6.0 (9a7b5d24c@2023-12-13T17:31:11) driver version: 0.8.2
+model input num: 1, output num: 3
+  index=0, name=images, n_dims=4, dims=[1, 640, 640, 3], n_elems=1228800, size=1228800, w_stride = 640, size_with_stride=1228800, fmt=NHWC, type=INT8, qnt_type=AFFINE, zp=-128, scale=0.003922
+  index=0, name=output, n_dims=4, dims=[1, 255, 80, 80], n_elems=1632000, size=1632000, w_stride = 0, size_with_stride=1638400, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-128, scale=0.003860
+  index=1, name=283, n_dims=4, dims=[1, 255, 40, 40], n_elems=408000, size=408000, w_stride = 0, size_with_stride=491520, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-128, scale=0.003922
+  index=2, name=285, n_dims=4, dims=[1, 255, 20, 20], n_elems=102000, size=102000, w_stride = 0, size_with_stride=163840, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-128, scale=0.003915
+model is NHWC input fmt
+model input height=640, width=640, channel=3
+Using mplane plugin for capture 
+[ WARN:0] global ../modules/videoio/src/cap_gstreamer.cpp (1824) handleMessage OpenCV | GStreamer warning: Embedded video playback halted; module v4l2src0 reported: Failed to allocate required memory.
+[ WARN:0] global ../modules/videoio/src/cap_gstreamer.cpp (914) open OpenCV | GStreamer warning: unable to start pipeline
+[ WARN:0] global ../modules/videoio/src/cap_gstreamer.cpp (501) isPipelinePlaying OpenCV | GStreamer warning: GStreamer: pipeline have not been created
+[ WARN:0] global ../modules/videoio/src/cap_v4l.cpp (893) open VIDEOIO(V4L2:/dev/video0): can't open camera by index
+ERROR! Unable to open camera
