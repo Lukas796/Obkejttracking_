@@ -6,6 +6,7 @@
 #include <sys/time.h>
 #include <iostream>
 #include <unistd.h>
+#include <yaml-cpp/yaml.h> // für YAML dateien
 
 #define _BASETSD_H
 
@@ -97,10 +98,45 @@ bool targetValid = false;
 int main(int argc, char **argv)
 {
   const char* device = "/dev/ttyACM0";
-    int serial_port = setupSerial(device);
-    if (serial_port < 0) return 1;
+  int serial_port = setupSerial(device);
+  if (serial_port < 0) return 1;
 
-    std::cout << "✅ UART geöffnet: " << device << std::endl;
+  std::cout << "✅ UART geöffnet: " << device << std::endl;
+  
+  // ========================
+  // 🔽 YAML-Konfiguration laden
+  // ========================
+  YAML::Node config;
+  try {
+    config = YAML::LoadFile("config.yaml");
+  } catch (const std::exception& e) {
+    std::cerr << "❌ Fehler beim Laden der YAML-Konfigurationsdatei: " << e.what() << "\n";
+    return 1;
+  }
+
+  if (!config["poti_pos"] || !config["poti_neg"]) {
+    std::cerr << "⚠️  Konfigurationsdatei ungültig oder unvollständig!\n";
+    return 1;
+  }
+
+  std::string posArray = config["poti_pos"].as<std::string>();
+  std::string negArray = config["poti_neg"].as<std::string>();
+
+  std::cout << "📄 Konfigurationswerte geladen:\n";
+  std::cout << "   ➤ POS: " << posArray << "\n";
+  std::cout << "   ➤ NEG: " << negArray << "\n";
+
+  // ========================
+  // 📤 Konfigurationsdaten an Arduino senden
+  // ========================
+  std::string posCmd = "CONF_POS:" + posArray + "\n";
+  std::string negCmd = "CONF_NEG:" + negArray + "\n";
+
+  write(serial_port, posCmd.c_str(), posCmd.size());
+  usleep(1000);  // kleine Pause
+  write(serial_port, negCmd.c_str(), negCmd.size());
+  usleep(1000);
+
   int send_counter = 0; //counter for USART Send Command
 
   // Tracking-Status
