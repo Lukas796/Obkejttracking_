@@ -447,10 +447,11 @@ static constexpr float minPersonConfidence = 0.75f;
         int topY = target->box.top;
         int midX = img.cols / 2;
         int midY = img.rows / 2;
+        int zielY = img.rows * 0.10;
 
         int dx = centerX - midX;
         //int dy = centerY - midY;
-        int dy = topY;
+        int dy = topY - zielY;  // Abstand zum Zielwert (Abstand zum Rand)
 
         std::string posString = "X:" + std::to_string(dx) + ",Y:" + std::to_string(dy) + "\n";
         auto start = std::chrono::steady_clock::now();
