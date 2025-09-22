@@ -443,12 +443,14 @@ static constexpr float minPersonConfidence = 0.75f;
 
         // 📤 Koordinaten senden...
         int centerX = (target->box.left + target->box.right) / 2;
-        int centerY = (target->box.top + target->box.bottom) / 2;
+        //int centerY = (target->box.top + target->box.bottom) / 2;
+        int topY = target->box.top;
         int midX = img.cols / 2;
         int midY = img.rows / 2;
 
         int dx = centerX - midX;
-        int dy = centerY - midY;
+        //int dy = centerY - midY;
+        int dy = topY;
 
         std::string posString = "X:" + std::to_string(dx) + ",Y:" + std::to_string(dy) + "\n";
         auto start = std::chrono::steady_clock::now();
