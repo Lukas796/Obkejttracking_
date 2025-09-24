@@ -62,10 +62,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track
+CMAKE_SOURCE_DIR = /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64
+CMAKE_BINARY_DIR = /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64
 
 # Include any dependencies generated for this target.
 include CMakeFiles/rknn_opi_hdmi_track.dir/depend.make
@@ -78,68 +78,68 @@ include CMakeFiles/rknn_opi_hdmi_track.dir/flags.make
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.o: CMakeFiles/rknn_opi_hdmi_track.dir/flags.make
 CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.o: ../../src/main_hdmi.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.o -c /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/main_hdmi.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.o -c /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/main_hdmi.cpp
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/main_hdmi.cpp > CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/main_hdmi.cpp > CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.i
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/main_hdmi.cpp -o CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/main_hdmi.cpp -o CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.s
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.o: CMakeFiles/rknn_opi_hdmi_track.dir/flags.make
 CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.o: ../../src/hdmi_out.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.o -c /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/hdmi_out.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.o -c /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/hdmi_out.cpp
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/hdmi_out.cpp > CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/hdmi_out.cpp > CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.i
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/hdmi_out.cpp -o CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/hdmi_out.cpp -o CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.s
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.o: CMakeFiles/rknn_opi_hdmi_track.dir/flags.make
 CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.o: ../../src/preprocess.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.o -c /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/preprocess.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.o -c /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/preprocess.cc
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/preprocess.cc > CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/preprocess.cc > CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.i
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/preprocess.cc -o CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/preprocess.cc -o CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.s
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.o: CMakeFiles/rknn_opi_hdmi_track.dir/flags.make
 CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.o: ../../src/postprocess.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.o -c /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/postprocess.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.o -c /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/postprocess.cc
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/postprocess.cc > CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/postprocess.cc > CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.i
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/postprocess.cc -o CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/postprocess.cc -o CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.s
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.o: CMakeFiles/rknn_opi_hdmi_track.dir/flags.make
 CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.o: ../../src/uart.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.o -c /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/uart.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.o -c /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/uart.cpp
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/uart.cpp > CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/uart.cpp > CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.i
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/uart.cpp -o CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/uart.cpp -o CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.s
 
 # Object files for target rknn_opi_hdmi_track
 rknn_opi_hdmi_track_OBJECTS = \
@@ -193,6 +193,7 @@ rknn_opi_hdmi_track: /usr/lib/aarch64-linux-gnu/libopencv_videostab.so.4.5.1
 rknn_opi_hdmi_track: /usr/lib/aarch64-linux-gnu/libopencv_viz.so.4.5.1
 rknn_opi_hdmi_track: /usr/lib/aarch64-linux-gnu/libopencv_xobjdetect.so.4.5.1
 rknn_opi_hdmi_track: /usr/lib/aarch64-linux-gnu/libopencv_xphoto.so.4.5.1
+rknn_opi_hdmi_track: /usr/lib/aarch64-linux-gnu/libyaml-cpp.so.0.6.3
 rknn_opi_hdmi_track: /usr/lib/aarch64-linux-gnu/libopencv_highgui.so.4.5.1
 rknn_opi_hdmi_track: /usr/lib/aarch64-linux-gnu/libopencv_datasets.so.4.5.1
 rknn_opi_hdmi_track: /usr/lib/aarch64-linux-gnu/libopencv_plot.so.4.5.1
@@ -213,7 +214,7 @@ rknn_opi_hdmi_track: /usr/lib/aarch64-linux-gnu/libopencv_photo.so.4.5.1
 rknn_opi_hdmi_track: /usr/lib/aarch64-linux-gnu/libopencv_imgproc.so.4.5.1
 rknn_opi_hdmi_track: /usr/lib/aarch64-linux-gnu/libopencv_core.so.4.5.1
 rknn_opi_hdmi_track: CMakeFiles/rknn_opi_hdmi_track.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable rknn_opi_hdmi_track"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable rknn_opi_hdmi_track"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rknn_opi_hdmi_track.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -226,6 +227,6 @@ CMakeFiles/rknn_opi_hdmi_track.dir/clean:
 .PHONY : CMakeFiles/rknn_opi_hdmi_track.dir/clean
 
 CMakeFiles/rknn_opi_hdmi_track.dir/depend:
-	cd /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64 /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64 /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64 /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64 /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/rknn_opi_hdmi_track.dir/depend
 

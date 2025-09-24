@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/time.h>
+#include <sys/ioctl.h>     // ioctl, TIOCM_DTR etc
+#include <fcntl.h>         // open, O_RDWR
 #include <iostream>
 #include <unistd.h>
 #include <yaml-cpp/yaml.h> // für YAML dateien
@@ -102,13 +104,34 @@ int main(int argc, char **argv)
   if (serial_port < 0) return 1;
 
   std::cout << "✅ UART geöffnet: " << device << std::endl;
+
+  // Arduino via DTR neustarten (falls unterstützt)
+  int dtr_flag = TIOCM_DTR;
+  ioctl(serial_port, TIOCMBIC, &dtr_flag);  // DTR auf LOW
+  usleep(100000);                           // 100ms warten
+  ioctl(serial_port, TIOCMBIS, &dtr_flag);  // DTR auf HIGH
+  usleep(1000000);  
+
+  std::cout << "⏳ Warte auf Arduino-Start...\n";
+  std::string line = readLine(serial_port, 1000);  // 100ms Timeout
+  int retries = 5;
+
+  while (line.find("READY") == std::string::npos && retries-- > 0) {
+      line = readLine(serial_port, 100);
+  }
+  if (line.find("READY") != std::string::npos) {
+      std::cout << "✅ Arduino bereit: " << line << std::endl;
+  } else {
+      std::cerr << "❌ Keine READY-Antwort vom Arduino!\n";
+      return 1;
+  }
   
   // ========================
   // 🔽 YAML-Konfiguration laden
   // ========================
   YAML::Node config;
   try {
-    config = YAML::LoadFile("config.yaml");
+    config = YAML::LoadFile("../../src/config.yaml");
   } catch (const std::exception& e) {
     std::cerr << "❌ Fehler beim Laden der YAML-Konfigurationsdatei: " << e.what() << "\n";
     return 1;
@@ -129,13 +152,50 @@ int main(int argc, char **argv)
   // ========================
   // 📤 Konfigurationsdaten an Arduino senden
   // ========================
-  std::string posCmd = "CONF_POS:" + posArray + "\n";
-  std::string negCmd = "CONF_NEG:" + negArray + "\n";
+  std::string posCmd = "POS_TABLE:" + posArray + "\n";
+  std::string negCmd = "NEG_TABLE:" + negArray + "\n";
 
+  
   write(serial_port, posCmd.c_str(), posCmd.size());
-  usleep(1000);  // kleine Pause
+  // 🟢 Logge den gesendeten POS-Befehl
+  std::cout << "📤 Sende an Arduino: " << posCmd;
+
+  // 📥 Warten auf ACK_POS
+  bool ackReceived = false;
+  for (int i = 0; i < 5; i++) {
+      std::string line = readLine(serial_port, 1000);
+      std::cout << "📥 Arduino antwortet: " << line << std::endl;
+      if (line.find("ACK_POS") != std::string::npos) {
+          ackReceived = true;
+          break;
+      }
+  }
+  if (!ackReceived) {
+      std::cerr << "❌ Keine ACK_POS vom Arduino!\n";
+      return 1;
+  }
+
   write(serial_port, negCmd.c_str(), negCmd.size());
-  usleep(1000);
+
+  // 🟢 Logge den gesendeten NEG-Befehl
+  std::cout << "📤 Sende an Arduino: " << negCmd;
+
+  // 📥 Warten auf ACK_NEG
+  ackReceived = false;
+  for (int i = 0; i < 5; i++) {
+      std::string line = readLine(serial_port, 1000);
+      std::cout << "📥 Arduino antwortet: " << line << std::endl;
+      if (line.find("ACK_NEG") != std::string::npos) {
+          ackReceived = true;
+          break;
+      }
+  }
+  if (!ackReceived) {
+      std::cerr << "❌ Keine ACK_NEG vom Arduino!\n";
+      return 1;
+  }
+
+std::cout << "✅ Konfigurationsdaten erfolgreich bestätigt.\n";
 
   int send_counter = 0; //counter for USART Send Command
 
