@@ -163,12 +163,14 @@ int main(int argc, char **argv)
   // 📥 Warten auf ACK_POS
   bool ackReceived = false;
   for (int i = 0; i < 5; i++) {
-      std::string line = readLine(serial_port, 1000);
-      std::cout << "📥 Arduino antwortet: " << line << std::endl;
-      if (line.find("ACK_POS") != std::string::npos) {
-          ackReceived = true;
-          break;
-      }
+      std::string response = readLine(serial_port, 1000);
+  if (!response.empty()) {
+    std::cout << "📥 Arduino antwortet: " << response << std::endl;
+   }
+  if (response.find("ACK_POS") != std::string::npos) {
+      ackReceived = true;
+       break;
+    }
   }
   if (!ackReceived) {
       std::cerr << "❌ Keine ACK_POS vom Arduino!\n";
@@ -183,19 +185,31 @@ int main(int argc, char **argv)
   // 📥 Warten auf ACK_NEG
   ackReceived = false;
   for (int i = 0; i < 5; i++) {
-      std::string line = readLine(serial_port, 1000);
-      std::cout << "📥 Arduino antwortet: " << line << std::endl;
-      if (line.find("ACK_NEG") != std::string::npos) {
-          ackReceived = true;
-          break;
-      }
+      std::string response = readLine(serial_port, 1000);
+  if (!response.empty()) {
+    std::cout << "📥 Arduino antwortet: " << response << std::endl;
+    }
+  if (response.find("ACK_NEG") != std::string::npos) {
+       ackReceived = true;
+       break;
+    }
   }
   if (!ackReceived) {
       std::cerr << "❌ Keine ACK_NEG vom Arduino!\n";
       return 1;
   }
 
+// 📥 Empfange alles bis CONFIG_OK
+while (true) {
+    std::string msg = readLine(serial_port, 1000);
+    if (!msg.empty()) {
+        std::cout << "📥 Arduino antwortet: " << msg << std::endl;
+        if (msg.find("CONFIG_OK") != std::string::npos) break;
+    }
+}
+
 std::cout << "✅ Konfigurationsdaten erfolgreich bestätigt.\n";
+
 
   int send_counter = 0; //counter for USART Send Command
 
