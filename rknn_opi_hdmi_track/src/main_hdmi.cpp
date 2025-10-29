@@ -557,7 +557,7 @@ static constexpr float minPersonConfidence = 0.75f;
         int topY = target->box.top;
         int midX = img.cols / 2;
         int midY = img.rows / 2;
-        int zielY = img.rows * 0.10;
+        int zielY = img.rows * 0.25;
 
         int dx = centerX - midX;
         //int dy = centerY - midY;
