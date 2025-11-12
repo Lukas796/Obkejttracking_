@@ -1,8 +1,8 @@
-# Install script for directory: /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track
+# Install script for directory: /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/install/rknn_opi_hdmi_track_Linux")
+  set(CMAKE_INSTALL_PREFIX "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/install/rknn_opi_hdmi_track_Linux")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,7 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE EXECUTABLE FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/rknn_opi_hdmi_track")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE EXECUTABLE FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/rknn_opi_hdmi_track")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./rknn_opi_hdmi_track" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./rknn_opi_hdmi_track")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -53,23 +53,23 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/library/librknn_api/aarch64/librknnrt.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/library/librknn_api/aarch64/librknnrt.so")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/library/rga//libs/Linux//gcc-aarch64/librga.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/library/rga//libs/Linux//gcc-aarch64/librga.so")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/./model" TYPE DIRECTORY FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/model/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/./model" TYPE DIRECTORY FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/model/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/./model" TYPE FILE FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/model/bus.jpg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/./model" TYPE FILE FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/model/bus.jpg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/./model" TYPE FILE FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/model/coco_80_labels_list.txt")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/./model" TYPE FILE FILES "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/model/coco_80_labels_list.txt")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -80,5 +80,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

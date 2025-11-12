@@ -4,8 +4,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/time.h>
+#include <sys/ioctl.h>     // ioctl, TIOCM_DTR etc
+#include <fcntl.h>         // open, O_RDWR
 #include <iostream>
 #include <unistd.h>
+#include <yaml-cpp/yaml.h> // für YAML dateien
 
 #define _BASETSD_H
 
@@ -97,10 +100,117 @@ bool targetValid = false;
 int main(int argc, char **argv)
 {
   const char* device = "/dev/ttyACM0";
-    int serial_port = setupSerial(device);
-    if (serial_port < 0) return 1;
+  int serial_port = setupSerial(device);
+  if (serial_port < 0) return 1;
 
-    std::cout << "✅ UART geöffnet: " << device << std::endl;
+  std::cout << "✅ UART geöffnet: " << device << std::endl;
+
+  // Arduino via DTR neustarten (falls unterstützt)
+  int dtr_flag = TIOCM_DTR;
+  ioctl(serial_port, TIOCMBIC, &dtr_flag);  // DTR auf LOW
+  usleep(100000);                           // 100ms warten
+  ioctl(serial_port, TIOCMBIS, &dtr_flag);  // DTR auf HIGH
+  usleep(1000000);  
+
+  std::cout << "⏳ Warte auf Arduino-Start...\n";
+  std::string line = readLine(serial_port, 1000);  // 100ms Timeout
+  int retries = 5;
+
+  while (line.find("READY") == std::string::npos && retries-- > 0) {
+      line = readLine(serial_port, 100);
+  }
+  if (line.find("READY") != std::string::npos) {
+      std::cout << "✅ Arduino bereit: " << line << std::endl;
+  } else {
+      std::cerr << "❌ Keine READY-Antwort vom Arduino!\n";
+      return 1;
+  }
+  
+  // ========================
+  // 🔽 YAML-Konfiguration laden
+  // ========================
+  YAML::Node config;
+  try {
+    config = YAML::LoadFile("../../src/config.yaml");
+  } catch (const std::exception& e) {
+    std::cerr << "❌ Fehler beim Laden der YAML-Konfigurationsdatei: " << e.what() << "\n";
+    return 1;
+  }
+
+  if (!config["poti_pos"] || !config["poti_neg"]) {
+    std::cerr << "⚠️  Konfigurationsdatei ungültig oder unvollständig!\n";
+    return 1;
+  }
+
+  std::string posArray = config["poti_pos"].as<std::string>();
+  std::string negArray = config["poti_neg"].as<std::string>();
+
+  std::cout << "📄 Konfigurationswerte geladen:\n";
+  std::cout << "   ➤ POS: " << posArray << "\n";
+  std::cout << "   ➤ NEG: " << negArray << "\n";
+
+  // ========================
+  // 📤 Konfigurationsdaten an Arduino senden
+  // ========================
+  std::string posCmd = "POS_TABLE:" + posArray + "\n";
+  std::string negCmd = "NEG_TABLE:" + negArray + "\n";
+
+  
+  write(serial_port, posCmd.c_str(), posCmd.size());
+  // 🟢 Logge den gesendeten POS-Befehl
+  std::cout << "📤 Sende an Arduino: " << posCmd;
+
+  // 📥 Warten auf ACK_POS
+  bool ackReceived = false;
+  for (int i = 0; i < 5; i++) {
+      std::string response = readLine(serial_port, 1000);
+  if (!response.empty()) {
+    std::cout << "📥 Arduino antwortet: " << response << std::endl;
+   }
+  if (response.find("ACK_POS") != std::string::npos) {
+      ackReceived = true;
+       break;
+    }
+  }
+  if (!ackReceived) {
+      std::cerr << "❌ Keine ACK_POS vom Arduino!\n";
+      return 1;
+  }
+
+  write(serial_port, negCmd.c_str(), negCmd.size());
+
+  // 🟢 Logge den gesendeten NEG-Befehl
+  std::cout << "📤 Sende an Arduino: " << negCmd;
+
+  // 📥 Warten auf ACK_NEG
+  ackReceived = false;
+  for (int i = 0; i < 5; i++) {
+      std::string response = readLine(serial_port, 1000);
+  if (!response.empty()) {
+    std::cout << "📥 Arduino antwortet: " << response << std::endl;
+    }
+  if (response.find("ACK_NEG") != std::string::npos) {
+       ackReceived = true;
+       break;
+    }
+  }
+  if (!ackReceived) {
+      std::cerr << "❌ Keine ACK_NEG vom Arduino!\n";
+      return 1;
+  }
+
+// 📥 Empfange alles bis CONFIG_OK
+while (true) {
+    std::string msg = readLine(serial_port, 1000);
+    if (!msg.empty()) {
+        std::cout << "📥 Arduino antwortet: " << msg << std::endl;
+        if (msg.find("CONFIG_OK") != std::string::npos) break;
+    }
+}
+
+std::cout << "✅ Konfigurationsdaten erfolgreich bestätigt.\n";
+
+
   int send_counter = 0; //counter for USART Send Command
 
   // Tracking-Status
@@ -443,12 +553,15 @@ static constexpr float minPersonConfidence = 0.75f;
 
         // 📤 Koordinaten senden...
         int centerX = (target->box.left + target->box.right) / 2;
-        int centerY = (target->box.top + target->box.bottom) / 2;
+        //int centerY = (target->box.top + target->box.bottom) / 2;
+        int topY = target->box.top;
         int midX = img.cols / 2;
         int midY = img.rows / 2;
+        int zielY = img.rows * 0.25;
 
         int dx = centerX - midX;
-        int dy = centerY - midY;
+        //int dy = centerY - midY;
+        int dy = topY - zielY;  // Abstand zum Zielwert (Abstand zum Rand)
 
         std::string posString = "X:" + std::to_string(dx) + ",Y:" + std::to_string(dy) + "\n";
         auto start = std::chrono::steady_clock::now();

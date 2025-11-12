@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/hdmi_out.cpp" "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.o"
-  "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/main_hdmi.cpp" "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.o"
-  "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/postprocess.cc" "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.o"
-  "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/preprocess.cc" "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.o"
-  "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/uart.cpp" "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.o"
+  "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/hdmi_out.cpp" "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.o"
+  "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/main_hdmi.cpp" "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.o"
+  "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/postprocess.cc" "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.o"
+  "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/preprocess.cc" "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.o"
+  "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/uart.cpp" "/home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

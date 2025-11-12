@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track
+CMAKE_SOURCE_DIR = /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64
+CMAKE_BINARY_DIR = /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -145,9 +145,9 @@ install/local/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/build/build_linux_aarch64/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

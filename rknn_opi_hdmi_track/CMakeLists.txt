@@ -36,6 +36,9 @@ include_directories(${RKNN_API_PATH}/include)
 # opencv
 find_package(OpenCV REQUIRED)
 
+# yaml
+find_package(yaml-cpp REQUIRED)
+
 # rga
 set(RGA_PATH ${CMAKE_SOURCE_DIR}/library/rga/)
 set(LIB_ARCH aarch64)
@@ -76,6 +79,7 @@ target_link_libraries(rknn_opi_hdmi_track
   ${RKNN_RT_LIB}
   ${RGA_LIB}
   ${OpenCV_LIBS}
+  yaml-cpp  
 )
 
 

@@ -3,7 +3,7 @@
 
 CMakeFiles/rknn_opi_hdmi_track.dir/src/hdmi_out.cpp.o
  ../../include/hdmi_out.hpp
- /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/hdmi_out.cpp
+ /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/hdmi_out.cpp
  /usr/include/opencv4/opencv2/core.hpp
  /usr/include/opencv4/opencv2/core/base.hpp
  /usr/include/opencv4/opencv2/core/bufferpool.hpp
@@ -51,7 +51,7 @@ CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.o
  ../../library/rga/include/im2d_type.h
  ../../library/rga/include/im2d_version.h
  ../../library/rga/include/rga.h
- /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/main_hdmi.cpp
+ /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/main_hdmi.cpp
  /usr/include/opencv4/opencv2/core.hpp
  /usr/include/opencv4/opencv2/core/base.hpp
  /usr/include/opencv4/opencv2/core/bufferpool.hpp
@@ -88,7 +88,7 @@ CMakeFiles/rknn_opi_hdmi_track.dir/src/main_hdmi.cpp.o
  /usr/include/opencv4/opencv2/videoio.hpp
 CMakeFiles/rknn_opi_hdmi_track.dir/src/postprocess.cc.o
  ../../include/postprocess.h
- /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/postprocess.cc
+ /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/postprocess.cc
 CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.o
  ../../include/postprocess.h
  ../../include/preprocess.h
@@ -101,7 +101,7 @@ CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.o
  ../../library/rga/include/im2d_type.h
  ../../library/rga/include/im2d_version.h
  ../../library/rga/include/rga.h
- /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/preprocess.cc
+ /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/preprocess.cc
  /usr/include/opencv4/opencv2/core.hpp
  /usr/include/opencv4/opencv2/core/base.hpp
  /usr/include/opencv4/opencv2/core/bufferpool.hpp
@@ -137,4 +137,4 @@ CMakeFiles/rknn_opi_hdmi_track.dir/src/preprocess.cc.o
  /usr/include/opencv4/opencv2/opencv_modules.hpp
 CMakeFiles/rknn_opi_hdmi_track.dir/src/uart.cpp.o
  ../../include/uart.hpp
- /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit/rknn_opi_hdmi_track/src/uart.cpp
+ /home/orangepi/repro/rknn-toolkit2/rknpu2/examples_Projektarbeit2/rknn_opi_hdmi_track/src/uart.cpp
