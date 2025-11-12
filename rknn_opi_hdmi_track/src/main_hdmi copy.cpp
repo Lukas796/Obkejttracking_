@@ -4,15 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/time.h>
-// -------------------------------------------------
-// begin of changes for Project Objectracking with KI
-#include <sys/ioctl.h>     // ioctl, TIOCM_DTR etc
-#include <fcntl.h>         // open, O_RDWR
-#include <iostream>
-#include <unistd.h>
-#include <yaml-cpp/yaml.h> // für YAML dateien
-// end of changes
-// -------------------------------------------------
+
 #define _BASETSD_H
 
 #include "RgaUtils.h"
@@ -20,11 +12,7 @@
 #include "rknn_api.h"
 #include "preprocess.h"
 #include "hdmi_out.hpp"
-// -------------------------------------------------
-// begin of changes for Project Objectracking with KI
-#include "uart.hpp"           //für uart
-// end of changes
-// -------------------------------------------------
+
 #include <opencv2/videoio.hpp>
 
 static void dump_tensor_attr(rknn_tensor_attr *attr)
@@ -96,143 +84,11 @@ static unsigned char *load_model(const char *filename, int *model_size)
   *model_size = size;
   return data;
 }
-// -------------------------------------------------
-// begin of changes for Project Objectracking with KI
-BOX_RECT lastTrackedBox;  // Letzte verfolgte Position (Bounding Box)
-bool targetValid = false;
-// end of changes
-//--------------------------------------------------
-
 /*-------------------------------------------
                   Main Functions
 -------------------------------------------*/
 int main(int argc, char **argv)
 {
-  // -------------------------------------------------
-  // begin of changes for Project Objectracking with KI
-  const char* device = "/dev/ttyACM0";
-  int serial_port = setupSerial(device);
-  if (serial_port < 0) return 1;
-
-  std::cout << "✅ UART geöffnet: " << device << std::endl;
-
-  // Arduino via DTR neustarten (falls unterstützt)
-  int dtr_flag = TIOCM_DTR;
-  ioctl(serial_port, TIOCMBIC, &dtr_flag);  // DTR auf LOW
-  usleep(100000);                           // 100ms warten
-  ioctl(serial_port, TIOCMBIS, &dtr_flag);  // DTR auf HIGH
-  usleep(1000000);  
-
-  std::cout << "⏳ Warte auf Arduino-Start...\n";
-  std::string line = readLine(serial_port, 1000);  // 100ms Timeout
-  int retries = 5;
-
-  while (line.find("READY") == std::string::npos && retries-- > 0) {
-      line = readLine(serial_port, 100);
-  }
-  if (line.find("READY") != std::string::npos) {
-      std::cout << "✅ Arduino bereit: " << line << std::endl;
-  } else {
-      std::cerr << "❌ Keine READY-Antwort vom Arduino!\n";
-      return 1;
-  }
-  
-  // ========================
-  // 🔽 YAML-Konfiguration laden
-  // ========================
-  YAML::Node config;
-  try {
-    config = YAML::LoadFile("../../src/config.yaml");
-  } catch (const std::exception& e) {
-    std::cerr << "❌ Fehler beim Laden der YAML-Konfigurationsdatei: " << e.what() << "\n";
-    return 1;
-  }
-
-  if (!config["poti_pos"] || !config["poti_neg"]) {
-    std::cerr << "⚠️  Konfigurationsdatei ungültig oder unvollständig!\n";
-    return 1;
-  }
-
-  std::string posArray = config["poti_pos"].as<std::string>();
-  std::string negArray = config["poti_neg"].as<std::string>();
-
-  std::cout << "📄 Konfigurationswerte geladen:\n";
-  std::cout << "   ➤ POS: " << posArray << "\n";
-  std::cout << "   ➤ NEG: " << negArray << "\n";
-
-  // ========================
-  // 📤 Konfigurationsdaten an Arduino senden
-  // ========================
-  std::string posCmd = "POS_TABLE:" + posArray + "\n";
-  std::string negCmd = "NEG_TABLE:" + negArray + "\n";
-
-  
-  write(serial_port, posCmd.c_str(), posCmd.size());
-  // 🟢 Logge den gesendeten POS-Befehl
-  std::cout << "📤 Sende an Arduino: " << posCmd;
-
-  // 📥 Warten auf ACK_POS
-  bool ackReceived = false;
-  for (int i = 0; i < 5; i++) {
-      std::string response = readLine(serial_port, 1000);
-  if (!response.empty()) {
-    std::cout << "📥 Arduino antwortet: " << response << std::endl;
-   }
-  if (response.find("ACK_POS") != std::string::npos) {
-      ackReceived = true;
-       break;
-    }
-  }
-  if (!ackReceived) {
-      std::cerr << "❌ Keine ACK_POS vom Arduino!\n";
-      return 1;
-  }
-
-  write(serial_port, negCmd.c_str(), negCmd.size());
-
-  // 🟢 Logge den gesendeten NEG-Befehl
-  std::cout << "📤 Sende an Arduino: " << negCmd;
-
-  // 📥 Warten auf ACK_NEG
-  ackReceived = false;
-  for (int i = 0; i < 5; i++) {
-      std::string response = readLine(serial_port, 1000);
-  if (!response.empty()) {
-    std::cout << "📥 Arduino antwortet: " << response << std::endl;
-    }
-  if (response.find("ACK_NEG") != std::string::npos) {
-       ackReceived = true;
-       break;
-    }
-  }
-  if (!ackReceived) {
-      std::cerr << "❌ Keine ACK_NEG vom Arduino!\n";
-      return 1;
-  }
-
-// 📥 Empfange alles bis CONFIG_OK
-while (true) {
-    std::string msg = readLine(serial_port, 1000);
-    if (!msg.empty()) {
-        std::cout << "📥 Arduino antwortet: " << msg << std::endl;
-        if (msg.find("CONFIG_OK") != std::string::npos) break;
-    }
-}
-
-std::cout << "✅ Konfigurationsdaten erfolgreich bestätigt.\n";
-
-
-  int send_counter = 0; //counter for USART Send Command
-
-  // Tracking-Status
-static std::string trackedClass = "";
-static bool trackingActive = false;
-static auto lastSeenTime = std::chrono::steady_clock::now();
-static const int trackingTimeoutMs = 2000; // 2 Sekunden Timeout
-static constexpr float minPersonConfidence = 0.75f;
-// end of changes
-//--------------------------------------------------
-
   if (argc < 2)
   {
     printf("Usage: %s <rknn model>\n", argv[0]);
@@ -502,114 +358,23 @@ static constexpr float minPersonConfidence = 0.75f;
     
     // Frames and Probabilities 画框和概率
     char text[256];
-
-    // -------------------------------------------------
-    // begin of changes for Project Objectracking with KI
     for (int i = 0; i < detect_result_group.count; i++) {
       detect_result_t *det_result = &(detect_result_group.results[i]);
-
-      if (std::string(det_result->name) != "person" || det_result->prop < minPersonConfidence) {
-        continue;
-      }
-
       sprintf(text, "%s %.1f%%", det_result->name, det_result->prop * 100);
       printf("%s @ (%d %d %d %d) %f\n", det_result->name, det_result->box.left, det_result->box.top,
-            det_result->box.right, det_result->box.bottom, det_result->prop);
-
+	     det_result->box.right, det_result->box.bottom, det_result->prop);
       int x1 = det_result->box.left;
       int y1 = det_result->box.top;
       int x2 = det_result->box.right;
       int y2 = det_result->box.bottom;
-      rectangle(frame, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0), 3);
+      rectangle(frame, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(256, 0, 0, 256), 3);
       putText(frame, text, cv::Point(x1, y1 + 12), cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(255, 255, 255));
     }
-
-   if (detect_result_group.count > 0) {
-    detect_result_t* target = nullptr;
-
-    float minDist = 999999.0f; // Irgendein hoher Startwert
-
-    for (int i = 0; i < detect_result_group.count; i++) {
-        detect_result_t* res = &(detect_result_group.results[i]);
-
-        if (std::string(res->name) != "person")
-            continue;
-
-        // Mittelpunkt der aktuellen Box
-        int cx = (res->box.left + res->box.right) / 2;
-        int cy = (res->box.top + res->box.bottom) / 2;
-
-        if (trackingActive && targetValid) {
-            // Mittelpunkt der zuletzt verfolgten Box
-            int lx = (lastTrackedBox.left + lastTrackedBox.right) / 2;
-            int ly = (lastTrackedBox.top + lastTrackedBox.bottom) / 2;
-
-            // Abstand zum alten Ziel
-            float dist = std::sqrt((cx - lx)*(cx - lx) + (cy - ly)*(cy - ly));
-
-            if (dist < minDist) {
-                minDist = dist;
-                target = res;
-            }
-        } else {
-            // Noch kein Ziel vorhanden → nimm erstes gefundenes
-            target = res;
-            trackingActive = true;
-            std::cout << "[INFO] Erstes Ziel gesetzt: person" << std::endl;
-            break;
-        }
-    }
-
-    // Wenn wir ein Ziel gefunden haben
-    if (target != nullptr) {
-        lastSeenTime = std::chrono::steady_clock::now();
-        lastTrackedBox = target->box;
-        targetValid = true;
-
-        // 📤 Koordinaten senden...
-        int centerX = (target->box.left + target->box.right) / 2;
-        //int centerY = (target->box.top + target->box.bottom) / 2;
-        int topY = target->box.top;
-        int midX = img.cols / 2;
-        int midY = img.rows / 2;
-        int zielY = img.rows * 0.25;
-
-        int dx = centerX - midX;
-        //int dy = centerY - midY;
-        int dy = topY - zielY;  // Abstand zum Zielwert (Abstand zum Rand)
-
-        std::string posString = "X:" + std::to_string(dx) + ",Y:" + std::to_string(dy) + "\n";
-        auto start = std::chrono::steady_clock::now();
-        write(serial_port, posString.c_str(), posString.length());
-        std::cout << "📤 [Tracking] Gesendet: " << posString;
-
-        std::string resp = readLine(serial_port,10);
-        while ('X' != resp[0]){
-            std::cout << "wrong buffer response " << resp << std::endl; 
-            resp = readLine(serial_port,10);
-        }
-        auto end = std::chrono::steady_clock::now();
-        std::cout << "📥 Antwort: " << resp << std::endl;
-    }
-  } else {
-    // ⚠️ Keine "person" erkannt – prüfen auf Timeout
-    auto now = std::chrono::steady_clock::now();
-    auto msSinceLastSeen = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastSeenTime).count();
-
-    if (trackingActive && msSinceLastSeen > trackingTimeoutMs) {
-        std::cout << "[INFO] Ziel verloren. Tracking zurückgesetzt.\n";
-        trackingActive = false;
-        targetValid = false;
-    }
-  }
-  // end of changes
-  //--------------------------------------------------
-
-  // write HDMI-OUT
-  hdmi_out_show(hdmi_out_ctx, frame);
+    // write HDMI-OUT
+    hdmi_out_show(hdmi_out_ctx, frame);
     
-  gettimeofday(&stop_time, NULL);
-  printf("while once run use %f ms\n", (__get_us(stop_time) - __get_us(start_time)) / 1000);
+    gettimeofday(&stop_time, NULL);
+    printf("while once run use %f ms\n", (__get_us(stop_time) - __get_us(start_time)) / 1000);
     
 }
   deinitPostProcess();
